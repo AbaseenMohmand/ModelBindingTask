@@ -47,6 +47,11 @@ namespace ModelBindingTask.Controllers
                 }
                 else
                 {
+                    var model = _context.Students.Find(student.Id);
+                    if (model == null)
+                    {
+                        return NotFound();
+                    }
                     _context.Students.Update(student);
                 }
                 await _context.SaveChangesAsync();
@@ -76,6 +81,10 @@ namespace ModelBindingTask.Controllers
             {
                 _context.Students.Update(student);
             }
+            else
+            {
+                return NotFound();
+            }
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -92,6 +101,10 @@ namespace ModelBindingTask.Controllers
             {
                 _context.Students.Update(student);
             }
+            else
+            {
+                return NotFound();
+            }
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -106,6 +119,10 @@ namespace ModelBindingTask.Controllers
             else if (student.Id == id)
             {
                 _context.Students.Update(student);
+            }
+            else
+            {
+                return NotFound();
             }
             _context.SaveChanges();
             return RedirectToAction("Index");
@@ -125,6 +142,10 @@ namespace ModelBindingTask.Controllers
             else if (student.Id == id)
             {
                 _context.Students.Update(student);
+            }
+            else
+            {
+                return NotFound();
             }
             _context.SaveChanges();
             return RedirectToAction("Index");
