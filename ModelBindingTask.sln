@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBindingTask", "ModelBindingTask\ModelBindingTask.csproj", "{AFED5995-1A03-474F-8A65-86E20BA32A09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFED5995-1A03-474F-8A65-86E20BA32A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFED5995-1A03-474F-8A65-86E20BA32A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFED5995-1A03-474F-8A65-86E20BA32A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFED5995-1A03-474F-8A65-86E20BA32A09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78E2BDE3-F4C2-4575-A274-0E7586789BEF}
+	EndGlobalSection
+EndGlobal
