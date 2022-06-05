@@ -4,8 +4,7 @@ using ModelBindingTask.Models;
 
 namespace ModelBindingTask.Controllers
 {
-    [ApiController]
-    [Route("api/[Controller]")]
+    
     public class ModelBindController : Controller
     {
         private readonly ApplicatonDbContext _context;
