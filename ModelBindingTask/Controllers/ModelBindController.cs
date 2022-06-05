@@ -4,7 +4,8 @@ using ModelBindingTask.Models;
 
 namespace ModelBindingTask.Controllers
 {
-
+    [ApiController]
+    [Route("api/[Controller]")]
     public class ModelBindController : Controller
     {
         private readonly ApplicatonDbContext _context;
@@ -71,7 +72,7 @@ namespace ModelBindingTask.Controllers
 
         //FromQuery
         [HttpGet]
-        public IActionResult GetDataFromQuery([FromQuery] Student student,int?id )
+        public IActionResult GetDataFromQuery([FromQuery] Student student,[FromQuery]int?id )
         {
             if(student.Id == null)
             {
@@ -89,9 +90,40 @@ namespace ModelBindingTask.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+        //("getdatafromroute/{id?}/{Name}/{Class}")
         //FromRoute
-        [HttpGet("getdatafromroute/{id?}/{Name}/{Class}")]
-        public IActionResult GetDataFromRoute([FromRoute]Student student,int? id)
+        [HttpPost]
+        [Route("GetDataFromRoute/{id?}/{Name}/{Class}")]
+        public IActionResult GetDataFromRoute([FromRoute] Student student, [FromRoute]int?id)
+        {
+            //var student = new Student();
+            //student.Id = id;
+            //student.Name = Name;
+            //student.Class = Class;
+
+            if (student.Id == null)
+            {
+                _context.Students.Add(student);
+            }
+            else if (student.Id == id)
+            {
+                _context.Students.Update(student);
+            }
+            else
+            {
+                return NotFound();
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        //GetDataFromBody
+
+        [HttpPost]
+        public IActionResult GetDataFromBody([FromBody] Student student,[FromBody] int? id)
         {
             if (student.Id == null)
             {
@@ -109,27 +141,12 @@ namespace ModelBindingTask.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public IActionResult GetDataFromBody([FromBody] Student student, int? id)
-        {
-            if (student.Id == null)
-            {
-                _context.Students.Add(student);
-            }
-            else if (student.Id == id)
-            {
-                _context.Students.Update(student);
-            }
-            else
-            {
-                return NotFound();
-            }
-            _context.SaveChanges();
-            return RedirectToAction("Index");
-        }
+
+
+        //GetDataFromHeader
 
         [HttpPost]
-        public IActionResult GetDataFromHeader([FromHeader] string Name, [FromHeader] string Class, int? id  )
+        public IActionResult GetDataFromHeader([FromHeader] string Name, [FromHeader] string Class,[FromHeader] int? id  )
         {
             var student = new Student();
             student.Id = id;
